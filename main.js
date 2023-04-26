@@ -48,6 +48,7 @@ function create_navbar_list(){
     for (i = 0; i < navbar_text.length; i++) {
         var li = document.createElement("li");
         var button = document.createElement("button");
+        button.className = "navbar-buttons"
         button.innerHTML = navbar_text[i];
         li.appendChild(button);
         document.getElementById("navbar-items").appendChild(li);
