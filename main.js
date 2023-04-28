@@ -56,3 +56,12 @@ function create_navbar_list(){
 }
 
 create_navbar_list()
+
+// Add the video as background to the main div
+// var video = document.createElement("video");
+// video.src = "media/intro.mp4";
+// video.autoplay = true;
+// video.loop = false;
+// video.muted = true;
+// video.id = "intro-video";
+// document.getElementById("video-div").appendChild(video);
