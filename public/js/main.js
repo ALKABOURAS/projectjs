@@ -17,7 +17,7 @@ function create_logo_list(){
         var li = document.createElement("li");
         var img = document.createElement("img");
         li.className= "team"
-        img.src = "svg/logos/" + logo_src[i];
+        img.src = "/svg/logos/" + logo_src[i];
         img.id = logo_id[i];
         li.appendChild(img);
         document.getElementById("teams-bar").appendChild(li);
@@ -32,7 +32,7 @@ function create_info_list(){
         var img = document.createElement("img");
         var span = document.createElement("span");
         li.className="info"
-        img.src = "svg/info/" + info_src[i];
+        img.src = "/svg/info/" + info_src[i];
         img.id = info_id[i];
         span.className = "info_text"
         span.innerHTML = info_text[i];
@@ -50,18 +50,13 @@ function create_navbar_list(){
         var button = document.createElement("button");
         button.className = "navbar-buttons"
         button.innerHTML = navbar_text[i];
+        //link button to page
+        button.onclick = function() {
+                window.location.href = "/teams";
+            };
         li.appendChild(button);
         document.getElementById("navbar-items").appendChild(li);
     }
 }
 
 create_navbar_list()
-
-// Add the video as background to the main div
-// var video = document.createElement("video");
-// video.src = "media/intro.mp4";
-// video.autoplay = true;
-// video.loop = false;
-// video.muted = true;
-// video.id = "intro-video";
-// document.getElementById("video-div").appendChild(video);

@@ -2,11 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    {{#if css}}
+    <link rel="stylesheet" href="/css/{{css}}">
+    {{/if}}
+    {{#if js}}
+    <script src="/js/{{js}}" defer></script>
+    {{/if}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src=/js/main.js defer></script>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
     <title>{{title}}</title>
 </head>
 <body>
-    {{{body}}}
+{{> header}}
+{{{body}}}
 </body>
 </html>

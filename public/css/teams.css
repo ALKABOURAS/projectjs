@@ -1,0 +1,141 @@
+.teams-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    position: relative;
+    /*width: 1920px;*/
+    /*height: 1597px;*/
+    /*left: 2480px;*/
+    /*top: 2613px;*/
+
+    background: #FFFFFF;
+}
+.items-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0px;
+    gap: 40px;
+
+    /*width: 1402px;*/
+    /*height: 860px;*/
+
+    border-radius: 10px;
+
+    /* Inside auto layout */
+
+    /*flex: none;*/
+    /*order: 2;*/
+    /*flex-grow: 0;*/
+}
+.items-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 90px;
+
+    /*width: 1402px;*/
+    /*height: 360px;*/
+
+    border-radius: 10px;
+
+    /* Inside auto layout */
+
+    /*flex: none;*/
+    /*order: 0;*/
+    /*align-self: stretch;*/
+    /*flex-grow: 0;*/
+
+}
+.item{
+    box-sizing: border-box;
+
+    width: 283px;
+    height: 360px;
+
+    background: #1E1E1E;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+.item-banner{
+    box-sizing: border-box;
+
+    position: relative;
+    width: 281px;
+    height: 162px;
+    left: 0px;
+    top: 0px;
+    /*border-bottom: 1px solid #000000;*/
+    border-radius: 10px 10px 10px 10px;
+
+}
+
+.item-icon{
+    box-sizing: border-box;
+
+    position: relative;
+    width: 130px;
+    height: 130px;
+    left: calc(50% - 130px/2 + 0.5px);
+    top: calc(50% - 130px/2 - 25px);
+    /*border: 1px solid #000000;*/
+}
+.item-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    position: relative;
+    width: 222px;
+    height: 98px;
+    left: calc(50% - 222px/2 + 2px);
+    top: calc(50% - 130px/2 - 55px);
+}
+.item-info-title{
+    width: 121px;
+    height: 18px;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    /*border: 1px solid #000000;*/
+
+    /* Inside auto layout */
+
+    /*flex: none;*/
+    /*order: 0;*/
+    /*flex-grow: 0;*/
+}
+.item-info-text{
+    width: 132px;
+    height: 16px;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: right;
+
+    color: #FFFFFF;
+
+}
