@@ -7,10 +7,22 @@
         <button class="headerbar_img" onclick= "window.location.href ='/'">
             <img src="/svg/logos/main_logo.svg" alt="logo"/>
         </button>
-        <ul class="teams_bar" id="teams-bar"></ul>
-        <ul class="info_bar" id="info-bar"></ul>
+        <ul class="teams_bar" id="teams-bar">
+            {{#each logos}}
+                {{> logo-list logo_src=logo_src logo_id=logo_id}}
+            {{/each}}
+        </ul>
+        <ul class="info_bar" id="info-bar">
+            {{#each infos}}
+                {{> info-list info_src=info_src info_id=info_id info_text=info_text}}
+            {{/each}}
+        </ul>
     </div>
     <div class="navbar">
-        <ul class="navbar-items" id="navbar-items"></ul>
+        <ul class="navbar-items" id="navbar-items">
+            {{#each navbar}}
+                {{> nav-list navbar_text=navbar_text button_href=button_href}}
+            {{/each}}
+        </ul>
     </div>
 </div>

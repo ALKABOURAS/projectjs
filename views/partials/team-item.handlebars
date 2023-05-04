@@ -1,7 +1,12 @@
-<div class="item">
-    <img class="item-banner" src="/svg/stadiums-small/{{stad_img}}" alt="Stadium Image">
-    <img class='item-icon' src="/svg/logos-small/{{team_img}}" alt="Team Image">
-    <div class="item-info">
+<div class='item'style="background: {{team_bg}}">
+    <div class="stad_container">
+        <img class='stad_img' alt="Stadium" src="/svg/stadiums-small/{{stad_img}}">
+    </div>
+    <div class="icon-container">
+        <img class="item-icon" src="/svg/logos-small/{{team_img}}.svg" alt="Team Logo">
+    </div>
+    <div class="item-info" >
             <span class="item-info-title">{{team_name}}</span>
+            <span class="item-info-stad">{{stad_name}}</span>
     </div>
 </div>

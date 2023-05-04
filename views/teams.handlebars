@@ -1,13 +1,10 @@
 <div class="banner-title"><span class="banner-text">Ομάδες</span></div>
 <div class="teams-container">
     <div class="items-container">
-        <ul class="items-row" id="items-row1">
-            {{#for 0 4}}
-                {{> team-item stad_img= this.stad_names stad_name team_img=logo_id team_name= }}
-            {{/for}}
-        </ul>
-<!--        <ul class="items-row" id="items-row2">-->
-
-<!--        </ul>-->
+        <div class="items-row" id="items-row1">
+            {{#each team_list}}
+                {{> team-item stad_img=stad_img team_img=team_img team_name=team_name team_bg=team_bg stad_name=stad_name}}
+            {{/each}}
+        </div>
     </div>
 </div>
