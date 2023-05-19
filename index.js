@@ -90,7 +90,16 @@ app.get('/schedule', (req, res) => {
             {'navbar_text': 'Βαθμολογία', 'button_href': '/standings'},
             {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
             {'navbar_text': 'About', 'button_href': '/about'}
-        ]} )});
+        ],
+        matches:[
+            {'match_id': 'match1','match_day': 'Κυριακή','match_date': '10/10/2021',
+                'match_team1': 'Νοορ1 Ρεντς','match_team2': 'Τριπλ Σιτι Ρειντερς',
+                'match_score1': '3','match_score2': '2',
+                'logo_id1': 'reds_logo','logo_src1': 'reds-logo.svg',
+                'logo_id2': 'raiders_logo','logo_src2': 'raiders-logo.svg',
+                'info_id2': 'location','info_src2': 'location-black.svg',
+                'info_id1': 'phone_number','info_src1': 'clock-dark.svg',
+                'match_location':'Narcos Arena'}]} )});
 
 
 app.listen(8080, () => {

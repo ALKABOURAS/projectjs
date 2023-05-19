@@ -143,18 +143,18 @@ ul{
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 60px 250px;
+    padding: 50px 250px;
     gap: 10px;
     background: linear-gradient(90.16deg, #005CC1 19.84%, #FFFFFF 100.05%);
 }
 .banner-text{
-    width: 230px;
-    height: 74px;
+    /*width: 230px;*/
+    /*height: 74px;*/
 
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 700;
-    font-size: 64px;
+    font-size: 60px;
     line-height: 74px;
     /* identical to box height */
 

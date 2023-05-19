@@ -1,0 +1,205 @@
+.schedule-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /*width: 1440px;*/
+    /*height: 710px;*/
+
+
+}
+.filter-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 0px;
+    gap: 10px;
+
+    width: 1440px;
+    height: 119px;
+}
+
+.matches{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 10px;
+    gap: 10px;
+
+    width: 1440px;
+    height: 482px;
+}
+
+.button-frame{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 589px;
+    gap: 10px;
+
+    width: 1440px;
+    height: 109px;
+
+}
+
+.match-frame{
+    display: flex;
+    /*box-sizing: border-box;*/
+    /*background: #CACED3;*/
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+
+    /*width: 1440px;*/
+    /*height: 88px;*/
+    align-self: stretch;
+    border-bottom: 1px solid #000000;
+
+}
+.match-date{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+
+    /*width: 345px;*/
+    /*height: 88px;*/
+}
+.match-date-day{
+    /*width: 163px;*/
+    /*height: 88px;*/
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+.match-date-date{
+    /*width: 162px;*/
+    /*height: 88px;*/
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+}
+
+.match-dets{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+
+    /*width: 710px;*/
+    /*height: 88px;*/
+}
+.match-dets-team{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    /*width: 272px;*/
+    /*height: 88px;*/
+
+}
+.match-dets-team-logo{
+    box-sizing: border-box;
+
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000000;
+}
+.match-dets-score{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+}
+.match-dets-score-score{
+    width: 23px;
+    height: 46px;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+.match-dets-score-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 2px;
+    gap: 10px;
+
+    width: 50px;
+    height: 60px;
+
+    background: #CACED3;
+
+}
+.logo-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 23px;
+    gap: 10px;
+
+}
+.match-location{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 42px;
+
+    /*width: 345px;*/
+    /*height: 88px;*/
+}
+.match-location-location{
+    /*width: 254px;*/
+    /*height: 88px;*/
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    color: #000000;
+}
