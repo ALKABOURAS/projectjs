@@ -3,8 +3,122 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0;}
-.team-banner{}
+.team-banner{
+    position: relative;
+}
 .team-logo{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 1277px;
+    height: 375px;
+    left: 0px;
+    top: 0px;
+
+
+    border-radius: 0px 150px 0px 0px;
+}
+.team-name{
+    position: absolute;
+    width: 361px;
+    height: 55px;
+    left: 458px;
+    top: 160px;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 55px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+}
+.team-stad{
+    position: absolute;
+    width: 781px;
+    height: 375px;
+    left: 1139px;
+    top: 0px;
+
+}
+.stad-img{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 781px;
+    height: 375px;
+    left: 1139px;
+    top: 0px;
+    border-width: 1px 1px 1px 0px;
+    border-style: solid;
+    border-color: #000000;
+}
+.stad-name{
+    position: absolute;
+    width: 266px;
+    height: 46px;
+    right: 23px;
+    top: calc(50% - 46px/2 + 164.5px);
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 46px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
 
 }
 .team-navs{}
+
+.logo-icon{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    left: calc(50% - 250px/2 - 305.5px);
+    top: calc(50% - 250px/2 - 0.5px);
+
+}
+
+.team-info-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 36px 27px;
+    gap: 10px;
+
+    width: 1440px;
+    height: 700px;
+
+}
+.team-info-img{
+    box-sizing: border-box;
+
+    width: 944px;
+    height: 628px;
+
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+.team-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 80px;
+
+    width: 369px;
+    height: 628px;
+}

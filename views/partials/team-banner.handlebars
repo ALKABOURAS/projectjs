@@ -1,19 +1,19 @@
 <div class="team-banner-container">
     <div class="team-banner">
+        <div class="team-stad">
+        <img class='stad_img' src="/svg/stadiums/{{stad_img}}" alt="{{stad_name}}">
+        <!--            <span class="stad-name">-->
+        <!--                {{stad_name}} </span>-->
+    </div>
         <div class="team">
-            <div class="team-logo">
-                <img src="{{team.logo}}" alt="{{team.name}}">
+            <div class="team-logo" style="background: {{team_bg}}">
+                <img class='logo-icon' src="/svg/logos-small/{{team_img}}.svg" alt="{{team_name}}">
                 <span class="team-name">
-                    {{team.name}}
+                    {{team_name}}
                 </span>
             </div>
+        </div>
 
-        </div>
-        <div class="team-stad">
-            <img class='stad_img' src="{{team.stad.image}}" alt="{{team.stad.name}}">
-            <span class="stad-name">
-                {{team.stad.name}} </span>
-        </div>
     </div>
     <div class="team-navs"></div>
 </div>
