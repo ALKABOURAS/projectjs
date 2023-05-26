@@ -10,13 +10,14 @@ fake = Faker('el_GR')
 random.seed(23)
 
 path = os.path.dirname(os.path.abspath(__file__))
+print(path)
 
 # Delete database if exists
-if os.path.exists('database.sqlite'):
-    os.remove('database.sqlite')
+if os.path.exists(path+'/database.sqlite'):
+    os.remove(path+'/database.sqlite')
 
 # Connect to database
-conn = sqlite3.connect('database.sqlite')
+conn = sqlite3.connect(path+'/database.sqlite')
 c = conn.cursor()
 
 # Create tables
@@ -166,7 +167,7 @@ def fetch_stadium(i):
 for i in range(1,15):
     for j in range(4):
         c.execute("INSERT INTO 'Match' VALUES(?,?,?,?,?,?,?,?) "
-          ,(None,fetch_stadium(rounds[i][j][1]),rounds[i][j][0],"2","1",rounds[i][j][1],rounds[1][j][2],i))
+          ,(None,fetch_stadium(rounds[i][j][1]),rounds[i][j][0],"2","1",rounds[i][j][1],rounds[i][j][2],i))
 
 conn.commit()
 # Close connection
