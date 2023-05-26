@@ -3,6 +3,9 @@ const app = express();
 const {engine} = require('express-handlebars');
 const path = require('path');
 const handlebars = require("handlebars");
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const crypto = require('crypto');
 app.use(express.static(path.join(__dirname + '/public') ) );
 //Handlebars
 app.engine('handlebars', engine({defaultLayout: 'main', layoutsDir: 'views/layouts/'}));
@@ -11,16 +14,17 @@ app.set('view engine', 'handlebars');
 
 //Routes
 app.get('/', (req, res) => {
-    res.render('index', {title: 'Home', logos:[
-            {'logo_id': 'norths_logo','logo_src': 'norths-logo.svg'},
-            {'logo_id': 'reds_logo','logo_src': 'reds-logo.svg'},
-            {'logo_id': 'greens_logo','logo_src': 'greens-logo.svg'},
-            {'logo_id': 'crabs_logo','logo_src': 'crabs-logo.svg'},
-            {'logo_id': 'winners_logo','logo_src': 'winners-logo.svg'},
-            {'logo_id': 'elders_logo','logo_src': 'elders-logo.svg'},
-            {'logo_id': 'raiders_logo','logo_src': 'raiders-logo.svg'},
-            {'logo_id': 'angels_logo','logo_src': 'angels-logo.svg'}
-        ],
+    res.render('index', {title: 'Home',
+            logos:[
+                {'logo_id': 'norths_logo','logo_src': 'norths-logo.svg' ,'team_name':'norths'},
+                {'logo_id': 'reds_logo','logo_src': 'reds-logo.svg','team_name':'reds'},
+                {'logo_id': 'greens_logo','logo_src': 'greens-logo.svg','team_name':'greens'},
+                {'logo_id': 'crabs_logo','logo_src': 'crabs-logo.svg','team_name':'crabs'},
+                {'logo_id': 'winners_logo','logo_src': 'winners-logo.svg','team_name':'winners'},
+                {'logo_id': 'elders_logo','logo_src': 'elders-logo.svg','team_name':'elders'},
+                {'logo_id': 'raiders_logo','logo_src': 'raiders-logo.svg','team_name':'raiders'},
+                {'logo_id': 'angels_logo','logo_src': 'angels-logo.svg','team_name':'angels'}
+            ],
         infos:[
             {'info_id': 'location','info_src': 'location.svg','info_text': 'Μεσογείων 174, 151 25 Μαρούσι'},
             {'info_id': 'phone_number','info_src': 'phone.svg','info_text': '+302310954050'},
@@ -101,6 +105,17 @@ app.get('/schedule', (req, res) => {
                 'info_id1': 'phone_number','info_src1': 'clock-dark.svg',
                 'match_location':'Narcos Arena'}]} )});
 
+app.get('/login', (req, res) => {
+  res.render('login', {title: 'Login', css: 'login.css', js: 'login.js'});
+});
+
+// var indexRouter = require('./routes/index');
+// var authRouter = require('./routes/auth');
+//
+//
+// app.use('/', indexRouter);
+// app.use('/', authRouter);
+
 team_dets=[[{ 'stad_img':'toumpa.svg','team_img':"norths-small",'team_bg':'#1E1E1E','team_name':'Salonica Norths'}],
     [{'stad_img':'narcos.svg','team_img':"reds-small",'team_bg':'#D31313','team_name':'Noor1 Reds'}],
     [{'stad_img': 'botanikos.svg','team_img':"greens-small",'team_bg':'#24A83C','team_name':'Green Last Believers'},
@@ -110,7 +125,19 @@ team_dets=[[{ 'stad_img':'toumpa.svg','team_img':"norths-small",'team_bg':'#1E1E
     ],[{'stad_img': 'morias.svg','team_img':"raiders-small",'team_bg':'#215E97','team_name':'Triple City Raiders'},
     ],[{'stad_img':'volos.svg','team_img':"angels-small",'team_bg':'#C2D1D9','team_name':'Volos Angels'}
 ]]
+team_info=[
+    [[{'title':'Γενικά','info_data':[{'Έτος Ίδρυσης':''},{'Οδός':''},{'Πόλη':''}]}],[{'title':'Επικοινωνία','info_data':[{'Τηλέφωνο':''},{'Email':''},{'Ιστοσελίδα':''}]}]],
+    [[{'title':'Γενικά','info_data':[{'Έτος Ίδρυσης':''},{'Οδός':''},{'Πόλη':''}]}],[{'title':'Επικοινωνία','info_data':[{'Τηλέφωνο':''},{'Email':''},{'Ιστοσελίδα':''}]}]],
+    [[{'title':'Γενικά','info_data':[{'Έτος Ίδρυσης':''},{'Οδός':''},{'Πόλη':''}]}],[{'title':'Επικοινωνία','info_data':[{'Τηλέφωνο':''},{'Email':''},{'Ιστοσελίδα':''}]}]],
+    [[{'title':'Γενικά','info_data':[{'Έτος Ίδρυσης':''},{'Οδός':''},{'Πόλη':''}]}],[{'title':'Επικοινωνία','info_data':[{'Τηλέφωνο':''},{'Email':''},{'Ιστοσελίδα':''}]}]],
+    [[{'title':'Γενικά','info_data':[{'Έτος Ίδρυσης':''},{'Οδός':''},{'Πόλη':''}]}],[{'title':'Επικοινωνία','info_data':[{'Τηλέφωνο':''},{'Email':''},{'Ιστοσελίδα':''}]}]],
+    [[{'title':'Γενικά','info_data':[{'Έτος Ίδρυσης':''},{'Οδός':''},{'Πόλη':''}]}],[{'title':'Επικοινωνία','info_data':[{'Τηλέφωνο':''},{'Email':''},{'Ιστοσελίδα':''}]}]],
+    [[{'title':'Γενικά','info_data':[{'Έτος Ίδρυσης':''},{'Οδός':''},{'Πόλη':''}]}],[{'title':'Επικοινωνία','info_data':[{'Τηλέφωνο':''},{'Email':''},{'Ιστοσελίδα':''}]}]],
+    [[{'title':'Γενικά','info_data':[{'Έτος Ίδρυσης':''},{'Οδός':''},{'Πόλη':''}]}],[{'title':'Επικοινωνία','info_data':[{'Τηλέφωνο':''},{'Email':''},{'Ιστοσελίδα':''}]}]]]
+
 names = ['norths','reds','greens','crabs','winners','elders','raiders','angels']
+team_infos=[[{'year':'1926','street':'Μικράς Ασίας 1'}],[],[],[],[],[],[],[]]
+
 for (let i = 0; i < team_dets.length; i++) {
     app.get('/teams/'+names[i], (req, res) => {
     res.render('team-page', {title: 'Team', css: 'team-banner.css',
@@ -136,7 +163,8 @@ for (let i = 0; i < team_dets.length; i++) {
                 {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
                 {'navbar_text': 'About', 'button_href': '/about'}
             ],
-            team_dets: team_dets[i]
+            team_dets: team_dets[i],
+            team_infos:team_infos[i]
 
         } )})};
 

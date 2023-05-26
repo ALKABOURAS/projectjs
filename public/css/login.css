@@ -1,0 +1,8 @@
+form i {
+    margin-left: -55px;
+    cursor: pointer;
+}
+/*make section inline*/
+section {
+    display: inline-block;
+}
