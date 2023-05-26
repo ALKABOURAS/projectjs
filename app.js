@@ -9,14 +9,7 @@ const morgan = require('morgan');
 const LocalStrategy = require('passport-local');
 const crypto = require('crypto');
 
-// const db = require('better-sqlite3')('database.db', {verbose: console.log});
-//
-// Create table users if not exists and fill with admin user with salt hashed password
-// db.prepare('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT, salt TEXT)').run();
-// const salt = crypto.randomBytes(16).toString('hex');
-// const hash = crypto.pbkdf2Sync('admin', salt, 1000, 64, 'sha512').toString('hex');
-// // db.prepare('INSERT INTO users (username, password, salt) VALUES (?, ?, ?)').run('admin', hash, salt);
-// console.log(db.prepare('SELECT * FROM users').all());
+const db = require('better-sqlite3')('database.sqlite');
 
 app.use(express.static(path.join(__dirname + '/public') ) );
 //Handlebars
