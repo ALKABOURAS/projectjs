@@ -3,9 +3,7 @@ const app = express();
 const {engine} = require('express-handlebars');
 const path = require('path');
 const handlebars = require("handlebars");
-const passport = require('passport');
-const LocalStrategy = require('passport-local');
-const crypto = require('crypto');
+
 app.use(express.static(path.join(__dirname + '/public') ) );
 //Handlebars
 app.engine('handlebars', engine({defaultLayout: 'main', layoutsDir: 'views/layouts/'}));
