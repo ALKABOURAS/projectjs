@@ -3,6 +3,20 @@ const app = express();
 const {engine} = require('express-handlebars');
 const path = require('path');
 const handlebars = require("handlebars");
+const passport = require('passport');
+const sessions = require('express-session');
+const morgan = require('morgan');
+const LocalStrategy = require('passport-local');
+const crypto = require('crypto');
+
+// const db = require('better-sqlite3')('database.db', {verbose: console.log});
+//
+// Create table users if not exists and fill with admin user with salt hashed password
+// db.prepare('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT, salt TEXT)').run();
+// const salt = crypto.randomBytes(16).toString('hex');
+// const hash = crypto.pbkdf2Sync('admin', salt, 1000, 64, 'sha512').toString('hex');
+// // db.prepare('INSERT INTO users (username, password, salt) VALUES (?, ?, ?)').run('admin', hash, salt);
+// console.log(db.prepare('SELECT * FROM users').all());
 
 app.use(express.static(path.join(__dirname + '/public') ) );
 //Handlebars
@@ -107,12 +121,8 @@ app.get('/login', (req, res) => {
   res.render('login', {title: 'Login', css: 'login.css', js: 'login.js'});
 });
 
-// var indexRouter = require('./routes/index');
-// var authRouter = require('./routes/auth');
-//
-//
-// app.use('/', indexRouter);
-// app.use('/', authRouter);
+
+
 
 team_dets=[[{ 'stad_img':'toumpa.svg','team_img':"norths-small",'team_bg':'#1E1E1E','team_name':'Salonica Norths'}],
     [{'stad_img':'narcos.svg','team_img':"reds-small",'team_bg':'#D31313','team_name':'Noor1 Reds'}],
