@@ -3,7 +3,7 @@
     <div class="items-container">
         <div class="items-row" id="items-row1">
             {{#each team_list}}
-                {{> team-item stad_img=stad_img team_img=team_img team_name=team_name team_bg=team_bg stad_name=stad_name logos_team_name=logos_team_name}}
+                {{> team-item team_short=team_name_short team_bg=team_bg stad_img=stad_name_short team_name=team_name stad_name=stadium}}
             {{/each}}
         </div>
     </div>

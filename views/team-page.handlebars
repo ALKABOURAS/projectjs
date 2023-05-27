@@ -1,7 +1,5 @@
 {{#each team_dets}}
-    {{> team-banner stad_img=stad_img logo_src=logo_src team_name=team_name team_bg=team_bg stad_name=stad_name}}
-{{/each}}
-{{#each team_infos}}
-    {{>team-info year=year street=street city=city email=email phone=phone web=web}}
+    {{> team-banner team_name=team_name team_name_short=team_name_short team_bg=team_bg stadium=stadium stad_name_short=stad_name_short}}
+    {{> team-info year=year street=stadium_address city=city email=email phone=phone_num web=website}}
 {{/each}}
 

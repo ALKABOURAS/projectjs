@@ -34,7 +34,10 @@ CREATE TABLE 'Team' (
 	'website' TEXT NOT NULL,
 	'stadium' TEXT NOT NULL,
 	'stadium_address' TEXT NOT NULL,
-	'team_name_short' TEXT NOT NULL
+	'team_name_short' TEXT NOT NULL,
+	'stad_name_short' TEXT NOT NULL,
+	'team_bg' TEXT NOT NULL,
+	'year' TEXT NOT NULL
 );""")
 
 c.execute("""
@@ -72,14 +75,17 @@ teams = ['Salonica Norths','Noor1 Reds', 'Green Last Believers',
          'Triple City Raiders','Volos Angels'
          ]
 cities = ['Θεσσαλονίκη','Πειραιάς','Αθήνα','Νέα Φιλαδέλφια','Πάτρα','Θεσσαλονίκη','Τρίπολη','Βόλος']
-names_small =['norths','reds','believers','crabs','winners','elders','raiders','angels']
+names_small =['norths','reds','greens','crabs','winners','elders','raiders','angels']
 stadiums = ['Mordor Arena','Narcos Arena','Botanikos Stadium','PROPAP Arena','Patras Stadium','West Stand','Morias Arena','Panthessaliko Stadium']
 adresses = ["Μορδόρ 23","Νάρκος 23","Μποτανικός 23","Πρόπαπ 23","Πάτρα 23","Δυτική Θέση 23","Μοριάς 23","Πανθεσσαλικό 23"]
 phone_numbers = ["2802009247",'2104986728','2107328327','2108751926','2920915966','2670502779','2710502779','2421095966']
+stad_names_small = ['toumpa','narcos','botanikos','propap','patras','elders','morias','volos']
+team_bg = ['#1E1E1E','#D31313','#24A83C','#BAAC13','#980100','#007AFF','#215E97','#C2D1D9']
+year_founded = ['1926','1925','1908','1924','1891','1908','1931','1924']
 for i in range(len(teams)):
-    c.execute("INSERT INTO 'Team' VALUES(?,?,?,?,?,?,?,?,?) "
+    c.execute("INSERT INTO 'Team' VALUES(?,?,?,?,?,?,?,?,?,?,?,?) "
         ,(None,teams[i],cities[i],f"info@{names_small[i]}.gr",phone_numbers[i],
-          f"{names_small[i]}.gr",stadiums[i],adresses[i],names_small[i]))
+          f"{names_small[i]}.gr",stadiums[i],adresses[i],names_small[i],stad_names_small[i],team_bg[i],year_founded[i]))
 
 for i in range(1,161):
     if i < 21:
