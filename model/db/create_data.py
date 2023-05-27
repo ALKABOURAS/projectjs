@@ -38,7 +38,7 @@ CREATE TABLE 'Team' (
 	'team_name_short' TEXT NOT NULL,
 	'stad_name_short' TEXT NOT NULL,
 	'team_bg' TEXT NOT NULL,
-	'year' TEXT NOT NULL 
+	'year' TEXT NOT NULL  
 );""")
 
 c.execute("""
