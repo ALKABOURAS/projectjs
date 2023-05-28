@@ -54,6 +54,18 @@ CREATE TABLE 'Player' (
 	FOREIGN KEY('team_id') REFERENCES 'Team'('team_id') On Delete Cascade
 );""")
 
+c.execute("""DROP TABLE IF EXISTS 'user';""")
+c.execute("""
+CREATE TABLE IF NOT EXISTS 'user' (
+  'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+  'username' TEXT NOT NULL,
+  'password' TEXT NOT NULL
+);
+""")
+c.execute("""
+    insert into user (username, password) values ('admin', 'admin');
+""")
+
 c.execute("""
 CREATE TABLE 'Match' (
 	'match_id' INTEGER PRIMARY KEY AUTOINCREMENT,

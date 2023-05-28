@@ -32,38 +32,45 @@ CREATE TABLE 'Match_day' (
 	'id' INTEGER PRIMARY KEY AUTOINCREMENT
 );
 
--- Write a query that returns the team name, city, and stadium for a specific team.
-SELECT team_name, city, stadium FROM Team WHERE team_id = ?;
+DROP TABLE IF EXISTS 'user';
+CREATE TABLE IF NOT EXISTS 'user' (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT NOT NULL,
+  password TEXT NOT NULL
+);
 
--- Write a query that returns all attibutes for a match.
-SELECT * FROM Match WHERE match_id = ?;
-
--- Write a query that returns the total goals scored by the home team grouped by the home team.
-SELECT home_team, SUM(home_score) FROM Match GROUP BY home_team;
-
--- Write a query that returns the total goals scored by the away team grouped by the away team.
-SELECT away_team, SUM(away_score) FROM Match GROUP BY away_team;
-
--- Write a query that returns the total goals scored by the home team grouped by the home team and match day.
-SELECT home_team, SUM(home_score) FROM Match GROUP BY home_team, match_day_id;
-
--- Write a query that returns the total goals scored by the away team grouped by the away team and match day.
-SELECT away_team, SUM(away_score) FROM Match GROUP BY away_team, match_day_id;
-
--- Write a query that returns the name(s) of the team(s) that scored the most goals.
-SELECT MAX(total_goals), home_team as team_most_goals FROM (SELECT SUM(home_score) AS total_goals, home_team FROM Match GROUP BY home_team) UNION SELECT MAX(total_goals), away_team FROM (SELECT SUM(away_score) AS total_goals, away_team FROM Match GROUP BY away_team);
-
--- Write a query that returns the name(s) of the team(s) that scored the least goals.
-SELECT MIN(total_goals), home_team as team_least_goals FROM (SELECT SUM(home_score) AS total_goals, home_team FROM Match GROUP BY home_team) UNION SELECT MIN(total_goals), away_team FROM (SELECT SUM(away_score) AS total_goals, away_team FROM Match GROUP BY away_team);
-
--- Write a query that returns the name(s) of the team(s) that scored the most goals on a match day.
-SELECT MAX(total_goals), home_team as team_most_goals FROM (SELECT SUM(home_score) AS total_goals, home_team, match_day_id FROM Match GROUP BY home_team, match_day_id) UNION SELECT MAX(total_goals), away_team FROM (SELECT SUM(away_score) AS total_goals, away_team, match_day_id FROM Match GROUP BY away_team, match_day_id);
-
--- Write a query that returns the name(s) of the team(s) that scored the least goals on a match day.
-SELECT MIN(total_goals), home_team as team_least_goals FROM (SELECT SUM(home_score) AS total_goals, home_team, match_day_id FROM Match GROUP BY home_team, match_day_id) UNION SELECT MIN(total_goals), away_team FROM (SELECT SUM(away_score) AS total_goals, away_team, match_day_id FROM Match GROUP BY away_team, match_day_id);
-
--- Write a query that returns the team_bg color for a specific team.
-SELECT team_bg FROM Team WHERE team_id = home_team;
-
--- Write a query that returns the team_bg color for a specific team.
-SELECT team_bg FROM Team WHERE team_id = away_team;
+-- -- Write a query that returns the team name, city, and stadium for a specific team.
+-- SELECT team_name, city, stadium FROM Team WHERE team_id = ?;
+--
+-- -- Write a query that returns all attibutes for a match.
+-- SELECT * FROM Match WHERE match_id = ?;
+--
+-- -- Write a query that returns the total goals scored by the home team grouped by the home team.
+-- SELECT home_team, SUM(home_score) FROM Match GROUP BY home_team;
+--
+-- -- Write a query that returns the total goals scored by the away team grouped by the away team.
+-- SELECT away_team, SUM(away_score) FROM Match GROUP BY away_team;
+--
+-- -- Write a query that returns the total goals scored by the home team grouped by the home team and match day.
+-- SELECT home_team, SUM(home_score) FROM Match GROUP BY home_team, match_day_id;
+--
+-- -- Write a query that returns the total goals scored by the away team grouped by the away team and match day.
+-- SELECT away_team, SUM(away_score) FROM Match GROUP BY away_team, match_day_id;
+--
+-- -- Write a query that returns the name(s) of the team(s) that scored the most goals.
+-- SELECT MAX(total_goals), home_team as team_most_goals FROM (SELECT SUM(home_score) AS total_goals, home_team FROM Match GROUP BY home_team) UNION SELECT MAX(total_goals), away_team FROM (SELECT SUM(away_score) AS total_goals, away_team FROM Match GROUP BY away_team);
+--
+-- -- Write a query that returns the name(s) of the team(s) that scored the least goals.
+-- SELECT MIN(total_goals), home_team as team_least_goals FROM (SELECT SUM(home_score) AS total_goals, home_team FROM Match GROUP BY home_team) UNION SELECT MIN(total_goals), away_team FROM (SELECT SUM(away_score) AS total_goals, away_team FROM Match GROUP BY away_team);
+--
+-- -- Write a query that returns the name(s) of the team(s) that scored the most goals on a match day.
+-- SELECT MAX(total_goals), home_team as team_most_goals FROM (SELECT SUM(home_score) AS total_goals, home_team, match_day_id FROM Match GROUP BY home_team, match_day_id) UNION SELECT MAX(total_goals), away_team FROM (SELECT SUM(away_score) AS total_goals, away_team, match_day_id FROM Match GROUP BY away_team, match_day_id);
+--
+-- -- Write a query that returns the name(s) of the team(s) that scored the least goals on a match day.
+-- SELECT MIN(total_goals), home_team as team_least_goals FROM (SELECT SUM(home_score) AS total_goals, home_team, match_day_id FROM Match GROUP BY home_team, match_day_id) UNION SELECT MIN(total_goals), away_team FROM (SELECT SUM(away_score) AS total_goals, away_team, match_day_id FROM Match GROUP BY away_team, match_day_id);
+--
+-- -- Write a query that returns the team_bg color for a specific team.
+-- SELECT team_bg FROM Team WHERE team_id = home_team;
+--
+-- -- Write a query that returns the team_bg color for a specific team.
+-- SELECT team_bg FROM Team WHERE team_id = away_team;

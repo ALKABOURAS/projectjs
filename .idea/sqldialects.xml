@@ -3,6 +3,7 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/app.js" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/model/db/create_data.py" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/model/db/create_user.py" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/model/db/database.sql" dialect="SQLite" />
   </component>
 </project>
