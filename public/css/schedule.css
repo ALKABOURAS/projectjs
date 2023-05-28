@@ -19,6 +19,45 @@
     width: 1440px;
     height: 119px;
 }
+.stats-title {
+    box-sizing: border-box;
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 1436px;
+    /*gap: 10px;*/
+    border-bottom: 1px solid #000000;
+
+    /* Inside auto layout */
+
+    align-self: center;}
+.team-comp{
+    /* team-comp */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+
+    /*width: 1440px;*/
+    /*height: 1248px;*/
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
 
 .matches{
     display: flex;
@@ -31,6 +70,29 @@
     width: 1440px;
     height: 482px;
 }
+
+.comp-title {
+
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 46px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
 
 .button-frame{
     display: flex;
@@ -322,7 +384,6 @@
     flex: none;
     order: 0;
     flex-grow: 0;}
-
 .match-dets-team-text{
     /*width: 175px;*/
     /*height: 88px;*/

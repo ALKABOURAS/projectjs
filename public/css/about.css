@@ -1,0 +1,59 @@
+.about-container{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+    padding: 20px 0px;
+
+    /*width: 1440px;*/
+    /*height: 634px;*/
+
+    background: #FFFFFF;
+
+    /* Inside auto layout */
+
+    /*flex: none;*/
+    /*order: 2;*/
+    /*flex-grow: 0;*/
+}
+.about-logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+}
+.about-img{
+    width: 300px;
+    height: 450px;
+}
+.about-text{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    /*align-self: stretch;*/
+    flex-grow: 0;
+}
+.about-text-cont{
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    padding: 20px 50px;
+}

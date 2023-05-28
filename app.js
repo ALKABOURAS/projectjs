@@ -4,11 +4,12 @@ const {engine} = require('express-handlebars');
 const path = require('path');
 const handlebars = require("handlebars");
 const passport = require('passport');
-const sessions = require('express-session');
+const session = require('express-session');
 const morgan = require('morgan');
 const LocalStrategy = require('passport-local');
 const crypto = require('crypto');
-
+const cookieParser = require("cookie-parser");
+const SQLiteStore = require('connect-sqlite3')(session); // store for sessions
 // path to the database
 const dbPath = path.resolve(__dirname, 'model', 'db', 'database.sqlite');
 // connect to the database
@@ -19,6 +20,20 @@ app.use(express.static(path.join(__dirname + '/public') ) );
 app.engine('handlebars', engine({defaultLayout: 'main', layoutsDir: 'views/layouts/'}));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser());
+// establish sessions
+// app.use(session({
+//     secret: 'secret',
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//         maxAge: 2000 * 60 * 60,
+//         sameSite: true
+//     },
+//     store: new SQLiteStore({ db: 'session.sqlite', dir: './model/sessions' })
+// }));
 //Routes
 app.get('/', (req, res) => {
     res.render('index', {title: 'Home',
@@ -55,6 +70,25 @@ app.get('/teams', (req, res) => {
         ],
     } )});
 
+function matchday_maker(){
+    let matchday = [];
+    for (let i = 1; i <= 14; i++) {
+        matchday[i-1] = {"match_day_id": i, "match":db.prepare("SELECT * FROM match where match_day_id = "+i).all()};}
+    return matchday;
+
+}
+matchday = matchday_maker()
+// add in matchday the bg colorof home and away team and the name of the teams and the shot name
+for (let i = 0; i < matchday.length; i++) {
+    for (let j = 0; j < matchday[i].match.length; j++) {
+        matchday[i].match[j].home_bg = (db.prepare("SELECT team_bg FROM team where team_id = "+matchday[i].match[j].home_team).get())['team_bg'];
+        matchday[i].match[j].away_bg = (db.prepare("SELECT team_bg FROM team where team_id = "+matchday[i].match[j].away_team).get())['team_bg'];
+        matchday[i].match[j].home_name = (db.prepare("SELECT team_name FROM team where team_id = "+matchday[i].match[j].home_team).get())['team_name'];
+        matchday[i].match[j].away_name = (db.prepare("SELECT team_name FROM team where team_id = "+matchday[i].match[j].away_team).get())['team_name'];
+        matchday[i].match[j].home_name_short = (db.prepare("SELECT team_name_short FROM team where team_id = "+matchday[i].match[j].home_team).get())['team_name_short'];
+        matchday[i].match[j].away_name_short = (db.prepare("SELECT team_name_short FROM team where team_id = "+matchday[i].match[j].away_team).get())['team_name_short'];}}
+
+
 app.get('/schedule', (req, res) => {
     res.render('schedule', {title: 'Schedule', css: 'schedule.css',
         logos : db.prepare('SELECT team_name_short FROM team').all(),
@@ -70,15 +104,8 @@ app.get('/schedule', (req, res) => {
             {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
             {'navbar_text': 'About', 'button_href': '/about'}
         ],
-        matches:[
-            {'match_id': 'match1','match_day': 'Κυριακή','match_date': '10/10/2021',
-                'match_team1': 'Νοορ1 Ρεντς','match_team2': 'Τριπλ Σιτι Ρειντερς',
-                'match_score1': '3','match_score2': '2',
-                'logo_id1': 'reds_logo','logo_src1': 'reds-logo.svg',
-                'logo_id2': 'raiders_logo','logo_src2': 'raiders-logo.svg',
-                'info_id2': 'location','info_src2': 'location-black.svg',
-                'info_id1': 'phone_number','info_src1': 'clock-dark.svg',
-                'match_location':'Narcos Arena'}]} )});
+        matchday: matchday
+    } )});
 
 app.get('/standings', (req, res) => {
     res.render('standings', {title: 'Standings', css: 'standings.css',
@@ -133,6 +160,25 @@ app.get('/login', (req, res) => {
       ],
   });
 });
+
+app.get('/about', (req, res) => {
+    res.render('about', {title: 'About Us', css: 'about.css',
+        logos : db.prepare('SELECT team_name_short FROM team').all(),
+        infos:[
+            {'info_id': 'location','info_src': 'location.svg','info_text': 'Μεσογείων 174, 151 25 Μαρούσι'},
+            {'info_id': 'phone_number','info_src': 'phone.svg','info_text': '+302310954050'},
+            {'info_id': 'email','info_src': 'email.svg','info_text': 'info@ultraleague.gr'}
+        ],
+        navbar:[
+            {'navbar_text': 'Ομάδες', 'button_href': '/teams'},
+            {'navbar_text': 'Πρόγραμμα', 'button_href': '/schedule'},
+            {'navbar_text': 'Βαθμολογία', 'button_href': '/standings'},
+            {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
+            {'navbar_text': 'About', 'button_href': '/about'}
+        ],
+    });
+});
+
 
 names = ['norths','reds','greens','crabs','winners','elders','raiders','angels']
 

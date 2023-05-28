@@ -1,14 +1,19 @@
 <div class="banner-title"><span class="banner-text">Αποτελέσματα</span></div>
 <div class="schedule-container">
-    <div class="filter-container">
-        
-    </div>
+    {{#each matchday}}
+    <div class="team-comp">
+        <div class="stats-title">
+            <span class="comp-title">Αγωνιστική {{match_day_id}}</span>
+        </div>
+
     <div class="matches">
-        {{#each matches}}
-            {{> result match_date=match_date match_team1=match_team1 match_team2=match_team2 match_score1=match_score1 match_score2=match_score2 match_location=match_location logo_src1=logo_src1 logo_src2=logo_src2 team_home_bg=team_home_bg team_away_bg=team_away_bg info_src2=info_src2}}
+        {{#each match}}
+            {{> result match_date=match_date match_team1=home_name match_team2=away_name match_score1=home_score match_score2=away_score match_location=stadium logo_src1=home_name_short logo_src2=away_name_short team_home_bg=home_bg team_away_bg=away_bg info_src2="location-black.svg"}}
         {{/each}}
     </div>
-    <div class="button-frame">
-        <button class="navbar-buttons" id="load-more">Επόμενη Αγωνιστική</button>
     </div>
+    {{/each}}
+<!--    <div class="button-frame">-->
+<!--        <button class="navbar-buttons" id="load-more">Επόμενη Αγωνιστική</button>-->
+<!--    </div>-->
 </div>
