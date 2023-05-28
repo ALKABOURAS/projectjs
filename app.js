@@ -34,7 +34,8 @@ app.get('/', (req, res) => {
             {'navbar_text': 'Βαθμολογία', 'button_href': '/standings'},
             {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
             {'navbar_text': 'About', 'button_href': '/about'}
-        ]});
+        ],
+    });
 } );
 app.get('/teams', (req, res) => {
     res.render('teams', {title: 'Teams', css: 'teams.css',
@@ -51,7 +52,8 @@ app.get('/teams', (req, res) => {
             {'navbar_text': 'Βαθμολογία', 'button_href': '/standings'},
             {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
             {'navbar_text': 'About', 'button_href': '/about'}
-        ]} )});
+        ],
+    } )});
 
 app.get('/schedule', (req, res) => {
     res.render('schedule', {title: 'Schedule', css: 'schedule.css',
@@ -78,9 +80,58 @@ app.get('/schedule', (req, res) => {
                 'info_id1': 'phone_number','info_src1': 'clock-dark.svg',
                 'match_location':'Narcos Arena'}]} )});
 
+app.get('/standings', (req, res) => {
+    res.render('standings', {title: 'Standings', css: 'standings.css',
+        logos : db.prepare('SELECT team_name_short FROM team').all(),
+        infos:[
+            {'info_id': 'location','info_src': 'location.svg','info_text': 'Μεσογείων 174, 151 25 Μαρούσι'},
+            {'info_id': 'phone_number','info_src': 'phone.svg','info_text': '+302310954050'},
+            {'info_id': 'email','info_src': 'email.svg','info_text': 'info@ultraleague.gr'}
+        ],
+        navbar:[
+            {'navbar_text': 'Ομάδες', 'button_href': '/teams'},
+            {'navbar_text': 'Πρόγραμμα', 'button_href': '/schedule'},
+            {'navbar_text': 'Βαθμολογία', 'button_href': '/standings'},
+            {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
+            {'navbar_text': 'About', 'button_href': '/about'}
+        ],
+        teams: db.prepare('SELECT s.position,t.team_name_short,s.played,s.wins,s.loses,s.draws,s.goals_for,s.goals_against,s.goals_difference, s.points, t.team_name FROM standings as s, team as t where s.team_id =t.team_id ').all()
+    } )});
+
+app.get('/contact', (req, res) => {
+    res.render('contact', {title: 'Contact', css: 'contact.css',
+        logos : db.prepare('SELECT team_name_short FROM team').all(),
+        infos:[
+            {'info_id': 'location','info_src': 'location.svg','info_text': 'Μεσογείων 174, 151 25 Μαρούσι'},
+            {'info_id': 'phone_number','info_src': 'phone.svg','info_text': '+302310954050'},
+            {'info_id': 'email','info_src': 'email.svg','info_text': 'info@ultraleague.gr'}
+        ],
+        navbar:[
+            {'navbar_text': 'Ομάδες', 'button_href': '/teams'},
+            {'navbar_text': 'Πρόγραμμα', 'button_href': '/schedule'},
+            {'navbar_text': 'Βαθμολογία', 'button_href': '/standings'},
+            {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
+            {'navbar_text': 'About', 'button_href': '/about'}
+        ],
+
+})});
+
 app.get('/login', (req, res) => {
   res.render('login', {title: 'Login', css: 'login.css', js: 'login.js',
-  logos : db.prepare('SELECT team_name_short FROM team').all()});
+      logos : db.prepare('SELECT team_name_short FROM team').all(),
+      infos:[
+          {'info_id': 'location','info_src': 'location.svg','info_text': 'Μεσογείων 174, 151 25 Μαρούσι'},
+          {'info_id': 'phone_number','info_src': 'phone.svg','info_text': '+302310954050'},
+          {'info_id': 'email','info_src': 'email.svg','info_text': 'info@ultraleague.gr'}
+      ],
+      navbar:[
+          {'navbar_text': 'Ομάδες', 'button_href': '/teams'},
+          {'navbar_text': 'Πρόγραμμα', 'button_href': '/schedule'},
+          {'navbar_text': 'Βαθμολογία', 'button_href': '/standings'},
+          {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
+          {'navbar_text': 'About', 'button_href': '/about'}
+      ],
+  });
 });
 
 names = ['norths','reds','greens','crabs','winners','elders','raiders','angels']
@@ -90,20 +141,24 @@ for (let i = 0; i < names.length; i++) {
     res.render('team-page', {title: 'Team', css: 'team-banner.css',
         logos : db.prepare('SELECT team_name_short FROM team').all(),
         infos:[
-                {'info_id': 'location','info_src': 'location.svg','info_text': 'Μεσογείων 174, 151 25 Μαρούσι'},
-                {'info_id': 'phone_number','info_src': 'phone.svg','info_text': '+302310954050'},
-                {'info_id': 'email','info_src': 'email.svg','info_text': 'info@ultraleague.gr'}
-            ],
+            {'info_id': 'location','info_src': 'location.svg','info_text': 'Μεσογείων 174, 151 25 Μαρούσι'},
+            {'info_id': 'phone_number','info_src': 'phone.svg','info_text': '+302310954050'},
+            {'info_id': 'email','info_src': 'email.svg','info_text': 'info@ultraleague.gr'}
+        ],
         navbar:[
-                {'navbar_text': 'Ομάδες', 'button_href': '/teams'},
-                {'navbar_text': 'Πρόγραμμα', 'button_href': '/schedule'},
-                {'navbar_text': 'Βαθμολογία', 'button_href': '/standings'},
-                {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
-                {'navbar_text': 'About', 'button_href': '/about'}
-            ],
-        team_dets: db.prepare('SELECT * FROM team WHERE team_id = '+(i+1)).all()
-        } )})}
-
+            {'navbar_text': 'Ομάδες', 'button_href': '/teams'},
+            {'navbar_text': 'Πρόγραμμα', 'button_href': '/schedule'},
+            {'navbar_text': 'Βαθμολογία', 'button_href': '/standings'},
+            {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
+            {'navbar_text': 'About', 'button_href': '/about'}
+        ],
+        team_dets: db.prepare('SELECT * FROM team WHERE team_id = '+(i+1)).all(),
+        goalkeepers: db.prepare("SELECT player_name, player_surname, player_number, player_position FROM player WHERE player_position = 'Τερματοφύλακας' and team_id = "+(i+1)).all(),
+        defenders: db.prepare("SELECT player_name, player_surname, player_number, player_position FROM player WHERE player_position = 'Αμυντικός' and team_id = "+(i+1)).all(),
+        midfielders: db.prepare("SELECT player_name, player_surname, player_number, player_position FROM player WHERE player_position = 'Μέσος' and team_id = "+(i+1)).all(),
+        forwards: db.prepare("SELECT player_name, player_surname, player_number, player_position FROM player WHERE player_position = 'Επιθετικός' and team_id = "+(i+1)).all(),
+        stats: db.prepare("SELECT position, points,played FROM standings WHERE team_id = "+(i+1)).all()
+    } )})}
 
 app.listen(8080, () => {
     console.log('Server is running on port 8080');

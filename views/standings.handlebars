@@ -1,0 +1,51 @@
+<div class="banner-title"><span class="banner-text">Βαθμολογία</span></div>
+<div class ="table-page">
+    <table>
+        <tr class="table-row">
+            <th class="position"><span class="position-text">Θέση</span> </th>
+            <th class="name"><span class="position-text">Ομάδα</span> </th>
+            <th class="played"><span class="position-text">Αγώνες</span> </th>
+            <th class="won"><span class="position-text">Νίκες</span> </th>
+            <th class="drawn"><span class="position-text">Ισοπαλίες</span> </th>
+            <th class="lost"><span class="position-text">Ήττες</span> </th>
+            <th class="GS"><span class="position-text">Γκολ Υπέρ</span> </th>
+            <th class="GC"><span class="position-text">Γκολ Κατά</span> </th>
+            <th class="GD"><span class="position-text">Διαφορά Γκολ</span> </th>
+            <th class="Pts"><span class="position-text">Βαθμοί</span> </th>
+        </tr>
+        <tbody>
+            {{#each teams}}
+                <tr class="table-row">
+                    <td class="row"><span class = "position-text">{{position}}</span></td>
+                    <td class="row">
+                        <span class = "position-text"><img class="team-logo" src="/svg/logos-small/{{team_name_short}}-small.svg" alt="team-logo">{{team_name}}</span>
+                    </td>
+                    <td class="row">
+                        <span class = "position-text">{{played}}</span>
+                    </td>
+                    <td class="row">
+                        <span class = "position-text">{{wins}}</span>
+                    </td>
+                    <td class="row">
+                        <span class = "position-text">{{draws}}</span>
+                    </td>
+                    <td class="row">
+                        <span class = "position-text">{{loses}}</span>
+                    </td>
+                    <td class="row">
+                        <span class = "position-text">{{goals_for}}</span>
+                    </td>
+                    <td class="row">
+                        <span class = "position-text">{{goals_against}}</span>
+                    </td>
+                    <td class="row">
+                        <span class = "position-text">{{goals_difference}}</span>
+                    </td>
+                    <td class="row">
+                        <span class = "position-text">{{points}}</span>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

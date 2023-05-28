@@ -2,4 +2,45 @@
     {{> team-banner team_name=team_name team_name_short=team_name_short team_bg=team_bg stadium=stadium stad_name_short=stad_name_short}}
     {{> team-info year=year street=stadium_address city=city email=email phone=phone_num web=website}}
 {{/each}}
+<!--Team Comp-->
+<div class="team-comp">
+    <span class="comp-title">Σύνθεση Ομάδας</span>
+    <div class="position-div">
+        <span class="players-grid-title">Τερματοφύλακες</span>
+        <div class="players-grid">
+            {{#each goalkeepers}}
+                {{> player-card player_number=player_number player_name=player_name player_surname=player_surname}}
+            {{/each}}
+    </div>
+</div>
+    <div class="position-div">
+        <span class="players-grid-title">Αμυντικοί</span>
+        <div class="players-grid">
+            {{#each defenders}}
+                {{> player-card player_number=player_number player_name=player_name player_surname=player_surname}}
+            {{/each}}
+        </div>
+    </div>
+    <div class="position-div">
+        <span class="players-grid-title">Μέσοι</span>
+        <div class="players-grid">
+            {{#each midfielders}}
+                {{> player-card player_number=player_number player_name=player_name player_surname=player_surname}}
+            {{/each}}
+        </div>
+    </div>
+    <div class="position-div">
+        <span class="players-grid-title">Επιθετικοί</span>
+        <div class="players-grid">
+            {{#each forwards}}
+                {{> player-card player_number=player_number player_name=player_name player_surname=player_surname}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{#each stats}}
+    {{> team-stats position=position points=points played=played}}
+{{/each}}
+
+
 

@@ -1,0 +1,93 @@
+/*make table not be seperated*/
+table{
+    border-collapse: collapse;
+width: 70%;
+}
+.table-page{
+    /* table-page */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+
+    /*width: 1138.57px;*/
+    /*height: 919.23px;*/
+
+    background: #FFFFFF;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+.table-row{
+    /*display: grid;*/
+    /*grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;*/
+    justify-content: center;
+    align-items: center;
+    /*padding: 5px;*/
+    /*gap: 15.81px;*/
+
+
+    background: #CACED3;
+}
+.position{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18.9762px 27.6736px;
+    /*gap: 7.91px;*/
+
+}
+.position-text{
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 22px;
+    /*make text in the same line*/
+
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+
+    color: #000000;
+
+}
+
+.row{
+    /*box-sizing: border-box;*/
+    border-bottom: 1px solid #000000;
+    /* Auto layout */
+
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    justify-content: center;
+    align-items: center;
+    padding: 15px 10px;
+    /*gap: 15.81px;*/
+
+    /*width: 1138.57px;*/
+    /*height: 76.7px;*/
+
+    background: #FFFFFF;
+
+}
+.team-logo{
+    width: 60px;
+    height: 60px;
+}

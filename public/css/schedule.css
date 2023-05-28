@@ -53,7 +53,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px;
-    gap: 20px;
+    /*gap: 20px;*/
 
     /*width: 1440px;*/
     /*height: 88px;*/
@@ -67,7 +67,7 @@
     justify-content: center;
     align-items: center;
     padding: 0px;
-    gap: 20px;
+    /*gap: 20px;*/
 
     /*width: 345px;*/
     /*height: 88px;*/
@@ -93,7 +93,7 @@
 
     font-family: 'Ubuntu';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 24px;
     line-height: 28px;
     display: flex;
@@ -102,6 +102,12 @@
 
     color: #000000;
 
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
 }
 
 .match-dets{
@@ -110,12 +116,21 @@
     justify-content: center;
     align-items: center;
     padding: 0px;
-    gap: 20px;
+    gap: 15px;
 
     /*width: 710px;*/
     /*height: 88px;*/
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
-.match-dets-team{
+.match-dets-team-home{
+    /* Auto layout */
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -125,25 +140,42 @@
     /*width: 272px;*/
     /*height: 88px;*/
 
-}
-.match-dets-team-logo{
-    box-sizing: border-box;
 
-    width: 50px;
-    height: 50px;
-    border: 1px solid #000000;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
-.match-dets-score{
+.match-dets-team-away{
+    /* Auto layout */
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 0px;
-    gap: 20px;
+/
+    width: 272px;
+    /*height: 88px;*/
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
+.match-dets-team-logo{
+    box-sizing: border-box;
+
+    width: 75px;
+    height: 75px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    border: 1px solid #000000;
 }
 .match-dets-score-score{
-    width: 23px;
-    height: 46px;
+    /*width: 23px;*/
+    /*height: 46px;*/
 
     font-family: 'Ubuntu';
     font-style: normal;
@@ -158,48 +190,158 @@
 
     color: #000000;
 }
-.match-dets-score-container{
+.match-dets-score-home-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 6px 2px;
+    padding: 0px 20px;
     gap: 10px;
 
-    width: 50px;
-    height: 60px;
+    /*width: 53px;*/
+    /*height: 88px;*/
 
     background: #CACED3;
 
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 1;
 }
-.logo-container{
+.match-dets-score-away-container{
+    /* away-result */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+    /*gap: 10px;*/
+
+    /*width: 53px;*/
+    /*height: 88px;*/
+
+    background: #CACED3;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 1;
+}
+.logo-container-home{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 18px 23px;
-    gap: 10px;
+    padding: 15px 40px;
+    /*gap: 10px;*/
 
+    /*width: 97px;*/
+    /*height: 80px;*/
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+.logo-container-away{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 40px;
+    /*gap: 10px;*/
+
+    /*width: 97px;*/
+    /*height: 88px;*/
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
 .match-location{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
-    gap: 42px;
+
+    /*padding: 0px;*/
+    /*gap: 42px;*/
 
     /*width: 345px;*/
     /*height: 88px;*/
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 1;
 }
 .match-location-location{
     /*width: 254px;*/
     /*height: 88px;*/
+
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 28px;
     display: flex;
+    align-items: center;
+
     color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+.location-graphic{
+    /*width: 18px;*/
+    /*height: 22px;*/
+    /*white-space: nowrap;*/
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;}
+
+.match-dets-team-text{
+    /*width: 175px;*/
+    /*height: 88px;*/
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
