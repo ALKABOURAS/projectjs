@@ -66,6 +66,28 @@ c.execute("""
     insert into user (username, password) values ('admin', 'admin');
 """)
 
+c.execute("""DROP TABLE IF EXISTS 'announcements';""")
+c.execute("""
+CREATE TABLE IF NOT EXISTS 'announcements' (
+  'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+  'title' TEXT NOT NULL,
+  'content' TEXT NOT NULL,
+  'link' TEXT NOT NULL
+);
+""")
+
+def generate_fake_article():
+    title = fake.catch_phrase()
+    content = fake.paragraphs(nb=3)
+
+    c.execute("""
+    insert into announcements (title, content, link) values (?, ?, ?);
+    """, (title, ' '.join(content), title[0:2].lower().replace(' ', '-')))
+
+for i in range(6):
+    fake_article = generate_fake_article()
+
+
 c.execute("""
 CREATE TABLE 'Match' (
 	'match_id' INTEGER PRIMARY KEY AUTOINCREMENT,

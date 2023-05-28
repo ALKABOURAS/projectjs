@@ -1,8 +1,21 @@
 import faker
 from faker import Faker
 fake = Faker('el_GR')
-for i in range(100):
-    # print fake mens name
-    print(fake.name_male())
-    print(fake.phone_number())
+
+def generate_fake_article():
+    title = fake.catch_phrase()
+    author = fake.name()
+    date = fake.date()
+    content = fake.paragraphs(nb=5)
+
+    article = f"""
+    Title: {title}
+    {' '.join(content)}
+    """
+
+    return article
+
+# Generate a fake sports article
+fake_article = generate_fake_article()
+print(fake_article)
 

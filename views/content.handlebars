@@ -1,0 +1,56 @@
+<div class="banner-title"><span class="banner-text">Σελίδα Διαχειριστή</span></div>
+<div class="anouncements-title-cont"><span class="anouncmenets-title">Επεξεργασία-Διαγραφή Ανακοίνωσης</span></div>
+<table id="anouncements-table">
+
+    <tr>
+        <th>Τίτλος</th>
+        <th>Κείμενο</th>
+        <th>ID</th>
+        <th>Επεξεργασία</th>
+        <th>Διαγραφή</th>
+    </tr>
+    {{#each announce}}
+    <tr>
+        <form action="/updateAnnouncement" method="GET">
+        <td><textarea type="text" CLASS="form-control" id="title2" name="title2">{{title}}</textarea></td>
+        <td><textarea type="text" CLASS="form-control" id="content2" name="content2">{{content}}</textarea></td>
+        <td><textarea type="text" CLASS="form-control" id="id2" name="id2">{{id}}</textarea></td>
+        <td><button class="navbar-buttons" type="submit">Επεξεργασία</button></td>
+        <td> <a class="navbar-buttons" href="/deleteAnnouncement?id={{id}}">Διαγραφή</td></form>
+    </tr>
+    {{/each}}
+
+</table>
+<div class="anouncements-title-cont"><span class="anouncmenets-title">Προσθήκη Ανακοίνωσης</span></div>
+<form action="/submitAnnouncement" method="GET">
+    <div class="form-group">
+        <label for="title">Τίτλος</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Τίτλος">
+    </div>
+    <div class="form-group">
+        <label for="content">Κείμενο</label>
+        <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="link">Link</label>
+        <textarea class="form-control" id="link" name="link" rows="3"></textarea>
+    </div>
+    <button type="submit" class="navbar-buttons">Προσθήκη</button>
+</form>
+<!--<table id="anouncements-table">-->
+<!--    <tr>-->
+<!--        <th>Τίτλος</th>-->
+<!--        <th>Κείμενο</th>-->
+<!--        <th>Επεξεργασία</th>-->
+<!--        <th>Διαγραφή</th>-->
+<!--    </tr>-->
+<!--    {{#each announce}}-->
+<!--        <tr>-->
+<!--            <td>{{title}}</td>-->
+<!--            <td>{{content}}</td>-->
+<!--            <td>{{id}}</td>-->
+<!--            <td><button class="navbar-buttons" onclick="window.location.href='/admin/edit/{{id}}'">Επεξεργασία</button></td>-->
+<!--            <td> <a class="navbar-buttons" href="/deleteAnnouncement?id={{id}}">Διαγραφή</td>-->
+<!--        </tr>-->
+<!--    {{/each}}-->
+<!--</table>-->

@@ -34,9 +34,17 @@ CREATE TABLE 'Match_day' (
 
 DROP TABLE IF EXISTS 'user';
 CREATE TABLE IF NOT EXISTS 'user' (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT NOT NULL,
-  password TEXT NOT NULL
+  'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+  'username' TEXT NOT NULL,
+  'password' TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS 'anouncements';
+CREATE TABLE IF NOT EXISTS 'anouncements' (
+  'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+  'title' TEXT NOT NULL,
+  'content' TEXT NOT NULL,
+  'link' TEXT NOT NULL
 );
 
 -- -- Write a query that returns the team name, city, and stadium for a specific team.

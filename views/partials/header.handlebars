@@ -24,5 +24,11 @@
                 {{> nav-list navbar_text=navbar_text button_href=button_href}}
             {{/each}}
         </ul>
+        {{#if user}}
+            <div class="navbar-buttons"> <a href="/logout">Logout {{user}}</a></div>
+        {{else}}
+            <div class="navbar-buttons"> <a href="/login">Log in</a></div>
+        {{/if}}
     </div>
+
 </div>

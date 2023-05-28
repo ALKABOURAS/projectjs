@@ -1,6 +1,6 @@
 <div class="banner-title"><span class="banner-text">Είσοδος Χρήστη</span></div>
 
-<form class='login' action="/login" method="post">
+<form class='login' action="/auth" method="post">
         <p>
             <label style="font-family: 'Ubuntu';
 font-style: normal;
@@ -25,7 +25,7 @@ display: flex;
 align-items: center;
 text-align: left;
 
-color: #000000;"type="text" name="username" id="username">
+color: #000000;"type="text" name="username" id="username" required>
         </p>
         <p>
             <label style="font-family: 'Ubuntu';
@@ -51,7 +51,7 @@ line-height: 46px;
 align-items: center;
 text-align: left;
 
-color: #000000;"type="password" name="password" id="password" />
+color: #000000;"type="password" name="password" id="password" required/>
             <i style="font-family: 'Ubuntu';
 font-style: normal;
 font-weight: 500;
@@ -65,5 +65,5 @@ text-align: left;
 
 color: #000000;"class="bi bi-eye-slash" id="togglePassword"></i>
         </p>
-    <button class="navbar-buttons" type="submit">Login</button>
+    <button class="navbar-buttons" value="Login" type="submit">Login</button>
 </form>

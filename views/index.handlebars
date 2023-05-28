@@ -1,2 +1,13 @@
-
-<h1> hello world</h1>
+<div class="home">
+    <div class = "anouncements-div">
+        <div class="anouncements-title-cont"><span class="anouncmenets-title">Νέα-Ανακοινώσεις</span></div>
+        <div class="items-row">
+            {{#each announce}}
+                {{> anouncement title=title text=content anouncement-link=link}}
+            {{/each}}
+        </div>
+    </div>
+    <div>
+        <button class="navbar-buttons" onclick="window.location.href='/announcements'">Περισσότερα</button>
+    </div>
+</div>
