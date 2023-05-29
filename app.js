@@ -162,6 +162,7 @@ app.use(session({
     cookie: { maxAge: 2*3600000 }
 }));
 
+
 var auth = function(req, res, next) {
     if (req.session && req.session.user === "admin")
         return next();
