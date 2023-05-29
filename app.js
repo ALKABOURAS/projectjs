@@ -170,41 +170,42 @@ var auth = function(req, res, next) {
         return res.sendStatus(401);
 };
 
-app.post('/auth', function(request, response) {
+app.post('/auth', async function (request, response) {
     // Capture the input fields
     let username = request.body.username;
     let password = request.body.password;
     // Check the username and password with db
-    try{ const creds = db.prepare('SELECT username, password FROM user WHERE username = ?').get(username);
+    try {
+        const creds = db.prepare('SELECT username, password FROM user WHERE username = ?').get(username);
+
         async function comparePasswords() {
             try {
                 const isMatch = await bcrypt.compare(password, creds.password.toString());
                 if (isMatch) {
                     console.log("Password is a match!");
+                    return isMatch;
                 } else {
                     console.log("Password is not a match!");
                 }
-                return isMatch;
+
             } catch (error) {
                 console.error(error);
             }
         }
 
-
-        if (creds.username === username && comparePasswords() === true) {
+        let isMatch = await comparePasswords();
+        if (creds.username === username && isMatch === true) {
 
             // Create a session variable
             request.session.loggedin = true;
             request.session.user = username;
             // Redirect to home page
             response.redirect('/content');
-        }
-        else {
+        } else {
             // Redirect to login page
             response.redirect('/login');
         }
-    }
-    catch (error){
+    } catch (error) {
         response.redirect('/login');
     }
 
