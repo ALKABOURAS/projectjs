@@ -175,33 +175,40 @@ app.post('/auth', function(request, response) {
     let username = request.body.username;
     let password = request.body.password;
     // Check the username and password with db
-    const creds = db.prepare('SELECT username, password FROM user WHERE username = ?').get(username);
-    async function comparePasswords() {
-        try {
-            const isMatch = await bcrypt.compare(password, creds.password.toString());
-            if (isMatch) {
-                console.log("Password is a match!");
-            } else {
-                console.log("Password is not a match!");
+    try{ const creds = db.prepare('SELECT username, password FROM user WHERE username = ?').get(username);
+        async function comparePasswords() {
+            try {
+                const isMatch = await bcrypt.compare(password, creds.password.toString());
+                if (isMatch) {
+                    console.log("Password is a match!");
+                } else {
+                    console.log("Password is not a match!");
+                }
+                return isMatch;
+            } catch (error) {
+                console.error(error);
             }
-        } catch (error) {
-            console.error(error);
+        }
+
+
+        if (creds.username === username && comparePasswords() === true) {
+
+            // Create a session variable
+            request.session.loggedin = true;
+            request.session.user = username;
+            // Redirect to home page
+            response.redirect('/content');
+        }
+        else {
+            // Redirect to login page
+            response.redirect('/login');
         }
     }
-
-
-    if (creds.username === username && comparePasswords()) {
-
-        // Create a session variable
-        request.session.loggedin = true;
-        request.session.user = username;
-        // Redirect to home page
-        response.redirect('/content');
-    }
-    else {
-        // Redirect to login page
+    catch (error){
         response.redirect('/login');
     }
+
+
 });
 app.get('/sendMessage', function(request, response) {
     let name = request.query['name'];
