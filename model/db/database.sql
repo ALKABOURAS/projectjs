@@ -46,6 +46,16 @@ CREATE TABLE IF NOT EXISTS 'anouncements' (
   'content' TEXT NOT NULL,
   'link' TEXT NOT NULL
 );
+DROP TABLE IF EXISTS 'messages';
+CREATE TABLE IF NOT EXISTS 'messages' (
+											  'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+											  'name' TEXT NOT NULL,
+											  'surname' TEXT NOT NULL,
+											  'email' TEXT NOT NULL,
+											  'message' TEXT NOT NULL,
+											  'company' TEXT NOT NULL
+
+);
 
 -- -- Write a query that returns the team name, city, and stadium for a specific team.
 -- SELECT team_name, city, stadium FROM Team WHERE team_id = ?;

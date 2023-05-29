@@ -83,6 +83,7 @@
     align-items: center;
     text-align: center;
 
+
     color: #000000;
 
 
@@ -216,8 +217,7 @@
     justify-content: center;
     align-items: center;
     padding: 0px;
-/
-    width: 272px;
+    /*width: 272px;*/
     /*height: 88px;*/
 
     /* Inside auto layout */
@@ -229,8 +229,8 @@
 .match-dets-team-logo{
     box-sizing: border-box;
 
-    width: 75px;
-    height: 75px;
+    /*width: 75px;*/
+    /*height: 75px;*/
     background: #FFFFFF;
     border-radius: 50%;
     border: 1px solid #000000;
@@ -336,7 +336,7 @@
 .match-location{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     /*padding: 0px;*/
@@ -353,8 +353,8 @@
     flex-grow: 1;
 }
 .match-location-location{
-    /*width: 254px;*/
-    /*height: 88px;*/
+    width: 254px;
+    height: 88px;
 
     font-family: 'Ubuntu';
     font-style: normal;
@@ -363,6 +363,7 @@
     line-height: 28px;
     display: flex;
     align-items: center;
+    /*text-align: right;*/
 
     color: #000000;
 
@@ -385,8 +386,8 @@
     order: 0;
     flex-grow: 0;}
 .match-dets-team-text{
-    /*width: 175px;*/
-    /*height: 88px;*/
+    width: 175px;
+    height: 88px;
 
     font-family: 'Ubuntu';
     font-style: normal;
@@ -396,13 +397,14 @@
     display: flex;
     align-items: center;
     text-align: center;
+    /*margin-left: auto;*/
 
     color: #000000;
 
 
     /* Inside auto layout */
 
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    /*flex: none;*/
+    /*order: 0;*/
+    /*flex-grow: 0;*/
 }

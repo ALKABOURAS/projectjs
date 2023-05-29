@@ -1,6 +1,6 @@
 <div class="banner-title"><span class="banner-text">Σελίδα Διαχειριστή</span></div>
 <div class="anouncements-title-cont"><span class="anouncmenets-title">Επεξεργασία-Διαγραφή Ανακοίνωσης</span></div>
-<table id="anouncements-table">
+<table class="table" id="anouncements-table">
 
     <tr>
         <th>Τίτλος</th>
@@ -21,7 +21,7 @@
     {{/each}}
 
 </table>
-<div class="anouncements-title-cont"><span class="anouncmenets-title">Προσθήκη Ανακοίνωσης</span></div>
+<div class="anouncements-title-cont" style="border-bottom: 1px "><span class="anouncmenets-title">Προσθήκη Ανακοίνωσης</span></div>
 <form action="/submitAnnouncement" method="GET">
     <div class="form-group">
         <label for="title">Τίτλος</label>
@@ -37,20 +37,22 @@
     </div>
     <button type="submit" class="navbar-buttons">Προσθήκη</button>
 </form>
-<!--<table id="anouncements-table">-->
-<!--    <tr>-->
-<!--        <th>Τίτλος</th>-->
-<!--        <th>Κείμενο</th>-->
-<!--        <th>Επεξεργασία</th>-->
-<!--        <th>Διαγραφή</th>-->
-<!--    </tr>-->
-<!--    {{#each announce}}-->
-<!--        <tr>-->
-<!--            <td>{{title}}</td>-->
-<!--            <td>{{content}}</td>-->
-<!--            <td>{{id}}</td>-->
-<!--            <td><button class="navbar-buttons" onclick="window.location.href='/admin/edit/{{id}}'">Επεξεργασία</button></td>-->
-<!--            <td> <a class="navbar-buttons" href="/deleteAnnouncement?id={{id}}">Διαγραφή</td>-->
-<!--        </tr>-->
-<!--    {{/each}}-->
-<!--</table>-->
+<div class="anouncements-title-cont" style="border-bottom: 1px "><span class="anouncmenets-title">Προβολή-Διαγραφή Μυνημάτων</span></div>
+<table class="table" id="messages-table">
+    <tr>
+        <th>Όνομα</th>
+        <th>Επώνυμο</th>
+        <th>Email</th>
+        <th>Εταιρία</th>
+        <th>Μύνημα</th>
+    </tr>
+{{#each message}}
+        <tr>
+                <td><textarea CLASS="form-control" id="title2" >{{name}}</textarea></td>
+                <td><textarea CLASS="form-control" id="content2" >{{surname}}</textarea></td>
+                <td><textarea CLASS="form-control" id="content2" >{{email}}</textarea></td>
+                <td><textarea CLASS="form-control" id="content2" >{{company}}</textarea></td>
+                <td><textarea CLASS="form-control" id="content2" >{{message}}</textarea></td>
+                <td> <a class="navbar-buttons" href="/deleteMessage?id={{id}}">Διαγραφή</td></form>
+        </tr>
+{{/each}}

@@ -5,7 +5,9 @@ const path = require('path');
 const handlebars = require("handlebars");
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 const popup = require('node-popup');
+const cookieParser = require("cookie-parser");
 // path to the database
 const dbPath = path.resolve(__dirname, 'model', 'db', 'database.sqlite');
 // connect to the database
@@ -22,7 +24,6 @@ app.engine('handlebars', engine({defaultLayout: 'main', layoutsDir: 'views/layou
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
 //Routes
-
 app.get('/teams', (req, res) => {
     res.render('teams', {title: 'Teams', css: 'teams.css',
         team_list: db.prepare('SELECT * FROM team').all(),
@@ -150,11 +151,15 @@ app.get('/about', (req, res) => {
 });
 
 names = ['norths','reds','greens','crabs','winners','elders','raiders','angels']
+//add cookies for session lenghth
+app.use(cookieParser());
+
 
 app.use(session({
     secret: '2C44-4D44-WppQ38S',
     resave: true,
     saveUninitialized: true,
+    cookie: { maxAge: 2*3600000 }
 }));
 
 var auth = function(req, res, next) {
@@ -168,20 +173,43 @@ app.post('/auth', function(request, response) {
     // Capture the input fields
     let username = request.body.username;
     let password = request.body.password;
-    // If both the fields are filled
-    // Check the credentials with database
-    const creds = db.prepare("SELECT * FROM user WHERE username = 'admin' AND password = 'admin'").get();
-    if (creds.username === username && creds.password === password) {
+    // Check the username and password with db
+    const creds = db.prepare('SELECT username, password FROM user WHERE username = ?').get(username);
+    async function comparePasswords() {
+        try {
+            const isMatch = await bcrypt.compare(password, creds.password.toString());
+            if (isMatch) {
+                console.log("Password is a match!");
+            } else {
+                console.log("Password is not a match!");
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+    if (creds.username === username && comparePasswords()) {
 
         // Create a session variable
         request.session.loggedin = true;
         request.session.user = username;
         // Redirect to home page
         response.redirect('/content');
-    } else {
+    }
+    else {
         // Redirect to login page
         response.redirect('/login');
     }
+});
+app.get('/sendMessage', function(request, response) {
+    let name = request.query['name'];
+    let email = request.query['email'];
+    let message = request.query['message'];
+    let surname = request.query['surname'];
+    let company = request.query['company'];
+    db.prepare('INSERT INTO messages (name, surname, email, company, message) VALUES (?, ?, ?, ?, ?)').run(name, surname, email, company, message);
+    response.redirect('/contact');
 });
 
 app.get('/logout', function (req, res) {
@@ -213,7 +241,7 @@ app.get('/', (req, res) => {
         ],
         // if user is logged in
         user: user,
-        announce:  db.prepare('SELECT id,title, content,link FROM announcements').all()
+        announce:  db.prepare('SELECT id,title, content FROM announcements').all()
     });
 } );
 app.get('/content', function(request, response) {
@@ -238,8 +266,8 @@ app.get('/content', function(request, response) {
                 ],
                 user: user,
                 announce:  db.prepare('SELECT id,title, content,link FROM announcements').all(),
-                match_scores: db.prepare('SELECT home_score, away_score FROM match').all()
-
+                match_scores: db.prepare('SELECT home_score, away_score FROM match').all(),
+                message: db.prepare('SELECT id, name, surname, email, company, message FROM messages').all(),
         }
         );
     }
@@ -256,6 +284,13 @@ app.get('/deleteAnnouncement',function(req,res)  {
     let id = req.query["id"];
     console.log(id);
     db.prepare("DELETE FROM announcements WHERE id = ?").run(id);
+    res.redirect('/content');
+});
+app.get('/deleteMessage',function(req,res)  {
+    user = req.session.user;
+    let id = req.query["id"];
+    console.log(id);
+    db.prepare("DELETE FROM messages WHERE id = ?").run(id);
     res.redirect('/content');
 });
 app.get('/updateAnnouncement',function(req,res)  {

@@ -1,6 +1,7 @@
 import sqlite3
 import os
 import random
+import bcrypt
 from itertools import combinations
 from datetime import datetime, timedelta
 
@@ -62,9 +63,8 @@ CREATE TABLE IF NOT EXISTS 'user' (
   'password' TEXT NOT NULL
 );
 """)
-c.execute("""
-    insert into user (username, password) values ('admin', 'admin');
-""")
+password1 = bcrypt.hashpw('admin'.encode('utf-8'), bcrypt.gensalt())
+
 
 c.execute("""DROP TABLE IF EXISTS 'announcements';""")
 c.execute("""
@@ -75,6 +75,18 @@ CREATE TABLE IF NOT EXISTS 'announcements' (
   'link' TEXT NOT NULL
 );
 """)
+c.execute("""DROP TABLE IF EXISTS 'messages';""")
+c.execute("""
+CREATE TABLE IF NOT EXISTS 'messages' (
+  'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+  'name' TEXT NOT NULL,
+  'surname' TEXT NOT NULL,
+  'email' TEXT NOT NULL,
+    'message' TEXT NOT NULL,
+    'company' TEXT NOT NULL
+);
+""")
+
 
 def generate_fake_article():
     title = fake.catch_phrase()
@@ -83,6 +95,11 @@ def generate_fake_article():
     c.execute("""
     insert into announcements (title, content, link) values (?, ?, ?);
     """, (title, ' '.join(content), title[0:2].lower().replace(' ', '-')))
+
+
+c.execute(
+    "insert into 'user' values (?,?, ?);", (None,'admin', password1))
+
 
 for i in range(6):
     fake_article = generate_fake_article()
