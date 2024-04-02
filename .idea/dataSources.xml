@@ -9,7 +9,7 @@
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="database" uuid="ff6e9c65-9f5e-4e8d-a836-bc1ce76ce6d4">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>8274e9ea-a92c-414e-82ac-787de5421929</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\brike\Desktop\projectjs\model\db\database.sqlite</jdbc-url>
@@ -21,7 +21,7 @@
       </libraries>
     </data-source>
     <data-source source="LOCAL" name="database [2]" uuid="cf6fa536-297b-4fea-b5ba-5a57f3af1dd5">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>8274e9ea-a92c-414e-82ac-787de5421929</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\brike\Desktop\projectjs\database.sqlite</jdbc-url>

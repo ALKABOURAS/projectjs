@@ -9,7 +9,7 @@ from faker import Faker
 
 fake = Faker('el_GR')
 
-random.seed(23)
+random.seed(4563332)
 
 path = os.path.dirname(os.path.abspath(__file__))
 print(path)
@@ -188,7 +188,7 @@ for i in range(1, 15):
     c.execute("INSERT INTO 'Match_day' VALUES(?) "
               , ([None]))
 
-random.seed(2322323233)
+
 from datetime import datetime, timedelta
 
 
@@ -248,12 +248,12 @@ for i, round_matches in enumerate(tournament_schedule):
 
 teams2 = {
     '1': 1,
-    '7': 0.8,
+    '2': 0.4,
+    '3': 0.8,
     '5': 0.8,
     '4': 0.6,
-    '3': 0.5,
     '6': 0.4,
-    '2': 0.7,
+    '7': 0.7,
     '8': 0.2,
     # Add more teams and their respective weights
 }

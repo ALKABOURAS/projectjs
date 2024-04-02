@@ -1,7 +1,7 @@
 import random
 from itertools import combinations
 
-random.seed(2322323233)
+random.seed(70)
 from datetime import datetime, timedelta
 
 def generate_rounds(teams, start_date, match_duration):
