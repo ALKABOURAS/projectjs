@@ -1,5 +1,28 @@
 <div class="banner-title"><span class="banner-text">Αποτελέσματα</span></div>
 <div class="schedule-container">
+<!--    add matchday filters-->
+    <div class="filter-container">
+        <select id="filter1" class="filter-dropdown">
+            <option value="">Επιλογή Σεζόν</option>
+            <option id="option1">Option 1</option>
+            <option id="option2">Option 2</option>
+                <!-- Add more options as needed -->
+        </select>
+
+        <select id="filter2" class="filter-dropdown">
+            <option value="">Επιλογή Αγωνιστικής</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <select id="filter3" class="filter-dropdown">
+            <option value="">Επιλογή Ομάδας</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
     {{#each matchday}}
     <div class="team-comp">
         <div class="stats-title">

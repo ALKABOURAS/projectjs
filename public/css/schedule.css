@@ -8,17 +8,7 @@
 
 
 }
-.filter-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 10px 0px;
-    gap: 10px;
 
-    width: 1440px;
-    height: 119px;
-}
 .stats-title {
     box-sizing: border-box;
 
