@@ -56,6 +56,25 @@ router.get('/sendMessage', function(request, response) {
     response.redirect('/contact');
 });
 
+
+router.get('/login', (req, res) => {
+    res.render('login', {title: 'Login', css: 'login.css', js: 'login.js',
+        logos : db.prepare('SELECT team_name_short FROM team').all(),
+        infos:[
+            {'info_id': 'location','info_src': 'location.svg','info_text': 'Μεσογείων 174, 151 25 Μαρούσι'},
+            {'info_id': 'phone_number','info_src': 'phone.svg','info_text': '+302310954050'},
+            {'info_id': 'email','info_src': 'email.svg','info_text': 'info@ultraleague.gr'}
+        ],
+        navbar:[
+            {'navbar_text': 'Ομάδες', 'button_href': '/teams'},
+            {'navbar_text': 'Πρόγραμμα', 'button_href': '/schedule'},
+            {'navbar_text': 'Βαθμολογία', 'button_href': '/standings'},
+            {'navbar_text': 'Επικοινωνία', 'button_href': '/contact'},
+            {'navbar_text': 'About', 'button_href': '/about'}
+        ],
+    });
+});
+
 router.get('/logout', function (req, res) {
     if (req.session.loggedin === true) {
         req.session.destroy();
