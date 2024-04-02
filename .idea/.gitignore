@@ -7,7 +7,5 @@
 /dataSources/
 /dataSources.local.xml
 
-# Ignore node_modules directory
-../node_modules/
 
 
