@@ -87,7 +87,6 @@
 }
 .info_text{
 
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -129,7 +128,6 @@
     gap: 10px;
     background: #007AFF;
     border-radius: 10px;
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -149,7 +147,6 @@
     /*width: 230px;*/
     /*height: 74px;*/
 
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 700;
     font-size: 60px;
