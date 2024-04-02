@@ -4,6 +4,7 @@ const router = express.Router();
 const dbPath = path.resolve(__dirname,'..', 'model', 'db', 'database.sqlite');
 const db = require('better-sqlite3')(dbPath);
 
+// send to a controller
 function matchday_maker(){
     let matchday = [];
     for (let i = 1; i <= 14; i++) {
@@ -12,7 +13,7 @@ function matchday_maker(){
 
 }
 matchday = matchday_maker()
-// add in matchday the bg colorof home and away team and the name of the teams and the shot name
+// add in matchday the bg colorof home and away team and the name of the teams and the short name
 for (let i = 0; i < matchday.length; i++) {
     for (let j = 0; j < matchday[i].match.length; j++) {
         matchday[i].match[j].home_bg = (db.prepare("SELECT team_bg FROM team where team_id = "+matchday[i].match[j].home_team).get())['team_bg'];

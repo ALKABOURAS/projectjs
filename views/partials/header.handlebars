@@ -4,9 +4,9 @@
         <source src="/media/intro.mp4" type="video/mp4">
     </video>
     <div class="headerbar">
-        <button class="headerbar_img" onclick= "window.location.href ='/'">
+        <a class="headerbar_img" onclick= "window.location.href ='/'">
             <img src="/svg/logos/main_logo.svg" alt="logo"/>
-        </button>
+        </a>
         <ul class="teams_bar" id="teams-bar">
             {{#each logos}}
                 {{> logo-list team_name=team_name_short}}
