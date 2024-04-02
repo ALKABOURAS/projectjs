@@ -130,7 +130,6 @@
     /*width: 121px;*/
     /*height: 18px;*/
 
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
@@ -153,7 +152,6 @@
     width: 132px;
     height: 16px;
 
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -168,7 +166,6 @@
 
 }
 .item-info-stad{
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 300;
     font-size: 14px;

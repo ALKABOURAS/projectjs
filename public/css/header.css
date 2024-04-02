@@ -1,0 +1,163 @@
+/*Video Player*/
+
+.video-container {
+    height: 456px;
+
+    position: relative;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Just styling the content of the div, the *magic* in the previous rules */
+.video-container .headerbar,.navbar {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    padding: 10px;
+}
+
+/*HEADERBAR ITEMS*/
+
+.headerbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /*width: 100%;*/
+    /*height: 104px;*/
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0px 50px;
+    gap: 50px;
+}
+.headerbar_img{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 65.71px;
+    height: 99px;
+}
+.teams_bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    /*width: 779px;*/
+    /*height: 104px;*/
+}
+.team{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
+
+    width: 86px;
+    height: 84px;
+}
+.info_bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 27px;
+
+    /*width: 773px;*/
+    /*height: 23px;*/
+}
+.info{display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+}
+.info_text{
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+/*NAVBAR ITEMS*/
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    height: 112px;
+
+}
+.navbar-items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 50px;
+}
+.navbar-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    background: #007AFF;
+    border-radius: 10px;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+}
+
+.banner-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 50px 250px;
+    gap: 10px;
+    background: linear-gradient(90.16deg, #005CC1 19.84%, #FFFFFF 100.05%);
+}
+.banner-text{
+    /*width: 230px;*/
+    /*height: 74px;*/
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 74px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}

@@ -73,8 +73,6 @@
 
 .comp-title {
 
-
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
@@ -139,7 +137,6 @@
     /*width: 163px;*/
     /*height: 88px;*/
 
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 900;
     font-size: 24px;
@@ -154,7 +151,6 @@
     /*width: 162px;*/
     /*height: 88px;*/
 
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 300;
     font-size: 24px;
@@ -239,7 +235,6 @@
     /*width: 23px;*/
     /*height: 46px;*/
 
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
@@ -356,7 +351,6 @@
     width: 254px;
     height: 88px;
 
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -389,7 +383,6 @@
     width: 175px;
     height: 88px;
 
-    font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
